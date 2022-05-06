@@ -12,7 +12,7 @@ namespace ProductAPI.Repository.IRepository
         Product GetProduct(int id);
         bool ProductExist(string name);
         bool ProductExist(int id);
-        bool CreateProduct(Product product);
+        bool CreateProduct(Product product); 
         bool UpdateProduct(Product product);
         bool DeleteProduct(Product product); 
         bool Save();
