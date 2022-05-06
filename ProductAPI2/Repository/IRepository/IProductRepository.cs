@@ -14,7 +14,7 @@ namespace ProductAPI.Repository.IRepository
         bool ProductExist(int id);
         bool CreateProduct(Product product);
         bool UpdateProduct(Product product);
-        bool DeleteProduct(Product product);
+        bool DeleteProduct(Product product); 
         bool Save();
     }
 }
