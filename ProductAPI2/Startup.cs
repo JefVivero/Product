@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ProductAPI.Context;
+using ProductAPI.Models;
+using ProductAPI.Models.DTO;
 using ProductAPI.Repository;
 using ProductAPI.Repository.IRepository;
 using System;
@@ -33,6 +35,11 @@ namespace ProductAPI2
                 option.UseSqlServer(Configuration.GetConnectionString("DefaultConnetionString"))
             );
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddAutoMapper(configuration =>
+            {
+                configuration.CreateMap<Product, ProductDTO>();
+                configuration.CreateMap<ProductDTO, Product>();
+            }, typeof(Startup));
             services.AddControllers();
         }
 
