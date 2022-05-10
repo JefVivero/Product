@@ -34,7 +34,7 @@
                             <label asp-for="@Model.Name" class="col-form-label"></label>
                         </div>
                         <div class="col-8">
-                            <input class="form-control" asp-for="@Model.Name" />
+                            <input class="form-control" asp-for="@Model.Name" readonly/>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -42,7 +42,7 @@
                             <label asp-for="@Model.Description" class="col-form-label"></label>
                         </div>
                         <div class="col-8">
-                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @readonly="true" })
                         </div>
                     </div>
                     <div class="form-group row">
@@ -50,7 +50,7 @@
                             <label asp-for="@Model.Price" class="col-form-label"></label>
                         </div>
                         <div class="col-8">
-                            <input class="form-control" asp-for="@Model.Price" />
+                            <input class="form-control" asp-for="@Model.Price" readonly/>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -58,7 +58,7 @@
                             <label asp-for="@Model.Rating" class="col-form-label"></label>
                         </div>
                         <div class="col-8">
-                            <input class="form-control" asp-for="@Model.Rating" />
+                            <input class="form-control" asp-for="@Model.Rating" readonly/>
                         </div>
                     </div>
                     <div class="form-group row">
