@@ -8,6 +8,10 @@ namespace ProductWEB.Models
 {
     public class Product
     {
+        public Product()
+        {
+            Errors = new List<Errors>();
+        }
         public int Id { get; set; }
         [Required(ErrorMessage ="El nombre del producto es necesario")]
         public string Name { get; set; }

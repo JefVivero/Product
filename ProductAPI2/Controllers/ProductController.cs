@@ -49,14 +49,14 @@ namespace ProductAPI.Controllers
 
             if (productRepository.ProductExist(productDto.Name))
             {
-                ModelState.AddModelError(string.Empty, $"Ya existe un producto con el nombre {productDto.Name}");
+                ModelState.AddModelError("Response", $"Ya existe un producto con el nombre {productDto.Name}");
                 return StatusCode(404, ModelState);
             }
 
             var product = mapper.Map<Product>(productDto);
             if (!productRepository.CreateProduct(product))
             {
-                ModelState.AddModelError(String.Empty, $"Ha ocurrido un error al intentar guardar el producto {productDto.Name}");
+                ModelState.AddModelError("Response", $"Ha ocurrido un error al intentar guardar el producto {productDto.Name}");
                 return StatusCode(500, ModelState);
             }
 
@@ -73,7 +73,7 @@ namespace ProductAPI.Controllers
             var product = mapper.Map<Product>(productDTO);
             if (!productRepository.UpdateProduct(product))
             {
-                ModelState.AddModelError(String.Empty, $"Ha ocurrido un error al intentar actualizar el producto {productDTO.Name}");
+                ModelState.AddModelError("Response", $"Ha ocurrido un error al intentar actualizar el producto {productDTO.Name}");
                 return StatusCode(500, ModelState);
             }
 
@@ -88,7 +88,7 @@ namespace ProductAPI.Controllers
             var product = productRepository.GetProduct(id);
             if (!productRepository.DeleteProduct(product))
             {
-                ModelState.AddModelError(string.Empty, $"Ha ocurrido un error al intentar eliminar el producto {product.Name}");
+                ModelState.AddModelError("Response", $"Ha ocurrido un error al intentar eliminar el producto {product.Name}");
                 return StatusCode(500, ModelState);
             }
             return NoContent();
