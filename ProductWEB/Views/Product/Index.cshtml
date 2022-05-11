@@ -14,8 +14,10 @@
     </div>
     <div class="card-body">
         <div class="row">
-            @if(Model.Count()> 0)
+            @if (Model != null)
             {
+                if (Model.Count() > 0)
+                {
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
@@ -56,14 +58,19 @@
                                    <partial name="_TableButtonPartial" model="item.Id"/>
                                 </td>
                             </tr>
-                            }
+                                        }
                         </tbody>
                     </table>
                 </div>
+                }
+                else
+                {
+                <p>No hay registros en esta base de datos</p>
+                 }
             }
             else
             {
-                <p>No hay registros en esta base de datos</p>
+        <p>No hay registros en esta base de datos</p>
             }
         </div>
     </div>

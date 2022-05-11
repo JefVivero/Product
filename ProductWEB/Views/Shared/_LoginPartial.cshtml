@@ -1,0 +1,25 @@
+﻿@inject IHttpContextAccessor httContextAccesor
+
+
+<ul class="navbar-nav">
+    @if (httContextAccesor.HttpContext.Session.GetString("Token") != null &&
+     httContextAccesor.HttpContext.Session.GetString("Token").Length > 0)
+    {
+        <li class="nav-item">
+            <a class="nav-link">Hola @httContextAccesor.HttpContext.Session.GetString("UserName")</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout"><i class="fa fa-sign-out"></i>&nbsp;Salir</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Register"><i class="fa fa-user">&nbsp;Registrarse</i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login"><i class="fa fa-sign-in"></i>&nbsp;Iniciar Sesión</a>
+        </li>
+    }
+
+</ul>

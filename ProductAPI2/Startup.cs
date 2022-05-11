@@ -38,15 +38,19 @@ namespace ProductAPI2
             services.AddDbContext<ApplicationDBContext>(option => 
                 option.UseSqlServer(Configuration.GetConnectionString("DefaultConnetionString"))
             );
+
             services.AddScoped<IProductRepository, ProductRepository>();
+
             services.AddAutoMapper(configuration =>
             {
                 configuration.CreateMap<Product, ProductDTO>();
                 configuration.CreateMap<ProductDTO, Product>();
             }, typeof(Startup));
+
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDBContext>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(option => option.TokenValidationParameters = new TokenValidationParameters 
                 { 
@@ -55,6 +59,8 @@ namespace ProductAPI2
                     ValidateIssuer = false,
                     ValidateAudience = false
                 });
+
+            services.AddCors();
             
             services.AddControllers();
         }
@@ -70,6 +76,7 @@ namespace ProductAPI2
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseAuthentication();            
 
